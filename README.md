@@ -14,5 +14,3 @@ Record your voice and change it!
 	- ... etc ...
 
 # Initial planning 
-### Jackie's TO-DO
-### Leo's TO-DO
