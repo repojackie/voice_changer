@@ -13,4 +13,5 @@ Record your voice and change it!
 	- "SAVE AS" Button
 	- ... etc ...
 
-# Initial planning 
+# NOTES
+You can find some test files for the GUI located in /test/gui. In this file, I will begin to construct the simple GUI with which we will build application.

@@ -9,7 +9,7 @@ class SimpleGui_2
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(400, 400);
 
-		JMenubar mb = new JmenuBar();
+		JMenuBar mb = new JMenuBar();
 		JMenu m1 = new JMenu("FILE");
 		JMenu m2 = new JMenu("Help");
 		mb.add(m1);
@@ -20,7 +20,7 @@ class SimpleGui_2
 		m1.add(m22);
 
 		JPanel panel = new JPanel();
-		JPanel label = new JLabel("Enter text");
+		JLabel label = new JLabel("Enter text");
 		JTextField tf = new JTextField(10);
 		JButton send = new JButton("Send");
 		JButton reset = new JButton("Reset");
