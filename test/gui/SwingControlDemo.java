@@ -2,24 +2,36 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * FURTHER RESEARCH TO CONSIDER:
+ *
+ * .addActionListener() <--- what do you need for this?
+ *
+ */
 public class SwingControlDemo 
 {
+	// the main components of our GUI
 	private JFrame mainFrame;
 	private JLabel headerLabel;
 	private JLabel statusLabel;
 	private JPanel controlPanel;
 
+	// default constructor 
 	public SwingControlDemo()
 	{
 		prepareGUI();
 	}
 
+	/**
+	 * Main
+	 */
 	public static void main(String[] args)
 	{
 		SwingControlDemo swingControlDemo = new SwingControlDemo();
 		swingControlDemo.showEventDemo();
 	}
 
+	// constructed by constructor :)
 	private void prepareGUI ()
 	{
 		mainFrame = new JFrame("Java SWING Example");
@@ -30,6 +42,10 @@ public class SwingControlDemo
 		statusLabel = new JLabel("", JLabel.CENTER);
 		statusLabel.setSize(350, 100);
 
+		/**
+		 * Just adding the close operation via weird abstract
+		 * classes
+		 */
 		mainFrame.addWindowListener(new WindowAdapter() 
 				{
 					public void windowClosing(WindowEvent windowEvent)
@@ -47,6 +63,9 @@ public class SwingControlDemo
 		mainFrame.setVisible(true);
 	}
 
+	/**
+	 * This is what the main function runs
+	 */
 	private void showEventDemo()
 	{
 		headerLabel.setText("Control in action: Button");
@@ -59,10 +78,12 @@ public class SwingControlDemo
 		submitButton.setActionCommand("Submit");
 		cancelButton.setActionCommand("Cancel");
 
+		// adding listeners to the buttons 
 		okButton.addActionListener(new ButtonClickListener());
 		submitButton.addActionListener(new ButtonClickListener());
 		cancelButton.addActionListener(new ButtonClickListener());
 
+		// adding buttons to the control panel
 		controlPanel.add(okButton);
 		controlPanel.add(submitButton);
 		controlPanel.add(cancelButton);
@@ -70,6 +91,10 @@ public class SwingControlDemo
 		mainFrame.setVisible(true);
 	}
 
+	/**
+	 * Button click listener class, responsible for maintaining 
+	 * clicks.
+	 */
 	private class ButtonClickListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
