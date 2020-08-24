@@ -12,7 +12,7 @@ import javax.swing.*;
 public class RecorderWindow
 {
 	private JFrame mainFrame;
-	private JPanel buttonPanel;
+	private JPanel controlPanel;
 
 	public RecorderWindow()
 	{
@@ -39,7 +39,7 @@ public class RecorderWindow
 				});
 
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new FlowLayout);
+		controlPanel.setLayout(new FlowLayout());
 
 		mainFrame.add(controlPanel);
 		mainFrame.setVisible(true);
@@ -52,5 +52,77 @@ public class RecorderWindow
 		 *
 		 *	TO DO!!!
 		 */
+
+		// record start/stop button 
+		JButton recordButton = new JButton("Record");
+		recordButton.setActionCommand("Record");
+		recordButton.addActionListener(new ButtonClickListener());
+		controlPanel.add(recordButton);
+
+		// browse for files
+		/**
+		 * TEMPORARY PLAN:
+		 * 
+		 */	
+		final JFileChooser fc = new JFileChooser();
+		JButton fileButton = new JButton("Choose file");
+		fileButton.setActionCommand("FC");
+		fileButton.addActionListener(new ButtonClickListener());
+		controlPanel.add(fileButton);
+
+		// effects drop-down list
+		String[] effectsList = {"Effect1", "Effect2", "Effect3"};
+		JComboBox<String> effectsMenu = new JComboBox<String>(effectsList);
+		effectsMenu.setSelectedIndex(0);
+		effectsMenu.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent event)
+					{
+						JComboBox combo = (JComboBox) event.getSource();
+						String selected = (String) combo.getSelectedItem();
+
+						if (selected.equals("Effect1"))
+						{
+							System.out.println("Effect1");
+							// plug in for effect 1
+						} else if (selected.equals("Effect2"))
+						{
+							System.out.println("Effect2");
+							// plug in for effect 2
+						} else if (selected.equals("Effect3"))
+						{
+							System.out.println("Effect3");
+							// plug in for effect 3
+						} else
+						{
+							System.out.println("Something went wrong");
+						}
+					}
+				});
+		controlPanel.add(effectsMenu);
+
+		mainFrame.setVisible(true);
+	}
+
+	private class ButtonClickListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String command = e.getActionCommand();
+
+			if (command.equals("Record"))
+			{
+				System.out.println("Record");
+				// METHOD TO BEGIN RECORDING
+				
+				// change the button label to have it stop recording
+			} else if (command.equals("FC"))
+			{
+				System.out.println("Choosing a file");
+			} else 
+			{
+				System.out.println("Something went wrong");
+			}
+		}
 	}
 }
