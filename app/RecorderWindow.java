@@ -59,12 +59,7 @@ public class RecorderWindow
 		recordButton.addActionListener(new ButtonClickListener());
 		controlPanel.add(recordButton);
 
-		// browse for files
-		/**
-		 * TEMPORARY PLAN:
-		 * 
-		 */	
-		final JFileChooser fc = new JFileChooser();
+		// file chooser	
 		JButton fileButton = new JButton("Choose file");
 		fileButton.setActionCommand("FC");
 		fileButton.addActionListener(new ButtonClickListener());
@@ -114,10 +109,24 @@ public class RecorderWindow
 			{
 				System.out.println("Record");
 				// METHOD TO BEGIN RECORDING
-				
+				if (((JButton)e.getSource()).getText().equals("Record"))
+				{
+					((JButton)e.getSource()).setText("STOP");
+				} else 
+				{
+					((JButton)e.getSource()).setText("Record");
+				}				
 				// change the button label to have it stop recording
 			} else if (command.equals("FC"))
 			{
+				final JFileChooser fc = new JFileChooser();
+				int returnVal = fc.showOpenDialog(null);
+
+				if (returnVal == JFileChooser.APPROVE_OPTION)
+				{
+					System.out.println("The chosen file is: " + fc.getSelectedFile().getName());
+				}
+
 				System.out.println("Choosing a file");
 			} else 
 			{
